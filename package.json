@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --open --mode development",
+    "build": "webpack-dev-server --open --mode production",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack --mode production"
+    "build_true": "webpack --mode production"
   },
   "repository": {
     "type": "git",
