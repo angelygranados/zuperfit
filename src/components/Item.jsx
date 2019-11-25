@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { setFavorite, deleteFavorite } from '../actions';
 import { Link } from 'react-router-dom';
 import priceIcon from '../assets/static/servings.png';
 import list from '../assets/static/list.png';
@@ -8,18 +7,24 @@ import clock from '../assets/static/time.png';
 import cart from '../assets/static/cart.png';
 import removeIcon from '../assets/static/minus.png';
 import favoritesIcon from '../assets/static/favorites.png';
+import {addItemToFavourites, addItemToShoppingCart} from '../actions/cartActions'
 import '../assets/styles/components/Item.scss';
 
 const Item = (props) => {
-    const {title, images, price, prepTime, description, id, isList} = props;
+
+    const {title, images, price, prepTime, description, _id, isList} = props;
+
     const handleSetFavorite = () =>{
-        props.setFavorite({
-            id, title, images, price, prepTime, description, isList
-        })
+        props.dispatch(addItemToFavourites(_id,'WishList'))
     }
     const handleDeleteFavorite = (itemId) =>{
         props.deleteFavorite(itemId)
     }
+
+    const handleSetShoppingCart = () =>{
+        props.dispatch(addItemToShoppingCart(_id,'Cart'))
+    }
+
     return(
         <div className="featured__item">
             <div className="featured__item--featured">
@@ -31,7 +36,7 @@ const Item = (props) => {
             <div className="featured-item__details">
                 <div className="featured-item__details--resume">
                     <img src={priceIcon}/><span className="featured-item__details--resume_span">{price}</span>
-                    <img src={list}/><span className="featured-item__details--resume_span">5 </span>
+                    <img src={list}/><span className="featured-item__details--resume_span">{5}</span>
                     <img src={clock}/><span className="featured-item__details--resume_span">{prepTime}</span>
                 </div>
                 <div className="featured-item__details--buttons">
@@ -39,7 +44,7 @@ const Item = (props) => {
                         className="featured-item__details--buttons--img" 
                         src={removeIcon} 
                         alt="Eliminar de favoritos"
-                        onClick={() => handleDeleteFavorite(id)} 
+                        onClick={() => handleDeleteFavorite} 
                     /> : <img 
                     className="featured-item__details--buttons--img" 
                     src={favoritesIcon} 
@@ -48,7 +53,9 @@ const Item = (props) => {
                 />}
                     
                     
-                    <img className="featured-item__details--buttons--img" src={cart} alt="Comprar" />
+                    <img className="featured-item__details--buttons--img" src={cart} alt="Comprar" 
+                        onClick={handleSetShoppingCart}
+                    />
                 </div>
             </div>
             <div className="featured__item--description">
@@ -58,9 +65,12 @@ const Item = (props) => {
     );
 };
 
-const mapDispatchToProps = {
-    setFavorite,
-    deleteFavorite
-}
 
-export default connect(null, mapDispatchToProps)(Item);
+const mapStateToProps = state => {
+    return {
+        recipes: state.recipes,
+        myFavorites: state.myFavorites
+    };
+};
+
+export default connect(mapStateToProps)(Item);
