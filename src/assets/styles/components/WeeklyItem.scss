@@ -1,0 +1,44 @@
+.weeklyItem__container{
+    display: grid;
+    grid-template-rows: 20px 70px 50px;
+    grid-template-columns: repeat(4, 25%);
+    grid-template-areas: "title title title title"
+                        "desayuno almuerzo cena postre";
+}
+.weeklyItem__day{
+    grid-area: title;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 12px;
+    margin-top: 0;
+    color:lightslategrey;
+}
+.weeklyItem__breakfast{
+    padding: 5px;
+    grid-area: desayuno;
+}
+.weeklyItem__lunch{
+    padding: 5px;
+    grid-area: almuerzo;
+}
+.weeklyItem__dinner{
+    padding: 5px;
+    grid-area: cena;
+}
+.weeklyItem__dessert{
+    padding: 5px;
+    grid-area: postre;
+}
+.weeklyItem__title{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 10px;
+    margin-top: 0;
+    color:lightslategrey;
+}
+.weeklyItem__img{
+    width: 100%;
+    height: 100%;
+}

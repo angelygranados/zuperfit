@@ -6,7 +6,6 @@ import RecipesList from '../containers/RecipesList';
 import CartItemList from '../containers/CartItemsList'
 import Register from '../containers/Register';
 import NotFound from '../containers/NotFound';
-import Favorites from '../containers/Favorites';
 import Layout from '../containers/Layout';
 
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import Cards from '../components/Cards'
+import Cards from '../components/Cards';
 import Item from '../components/Item';
 
 import '../assets/styles/containers/Favorites.scss'

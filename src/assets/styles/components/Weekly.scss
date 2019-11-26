@@ -1,7 +1,7 @@
-.featured{
+.weeklyMenu{
     height: fit-content;
 }
-.featured__title{
+.weeklyMenu__title{
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     text-align: center;
     font-size: 14px;
@@ -9,7 +9,7 @@
     text-transform: uppercase;
 }
 @media screen and (max-width: 300px){
-    .featured__title{
+    .weeklyMenu__title{
         font-size: 12px;
     }
 }

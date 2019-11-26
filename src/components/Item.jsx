@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
 import priceIcon from '../assets/static/servings.png';
 import list from '../assets/static/list.png';
 import clock from '../assets/static/time.png';
@@ -17,8 +16,8 @@ const Item = (props) => {
     const handleSetFavorite = () =>{
         props.dispatch(addItemToFavourites(_id,'WishList'))
     }
-    const handleDeleteFavorite = (itemId) =>{
-        props.deleteFavorite(itemId)
+    const handleDeleteFavorite = (_id) =>{
+        props.deleteFavorite(_id)
     }
 
     const handleSetShoppingCart = () =>{

@@ -6,7 +6,10 @@ import Categories from '../components/Categories';
 import Featured from '../components/Featured';
 import Item from '../components/Item';
 import axios from 'axios'
-// import Summary from '../components/Summary'
+import Weekly from '../components/Weekly';
+import WeeklyItem from '../components/WeeklyItem';
+import FeaturedSection from '../components/FeaturedSection';
+
 function getRandomId(recipesIds) {
     let max = Math.max(...recipesIds) 
     let min = Math.min(...recipesIds)
@@ -15,21 +18,30 @@ function getRandomId(recipesIds) {
 
 
 const Home = ({recipes}) => {
-
+    const [weekly, setWeekly] = useState([])
     const [recipe, setRecipe] = useState([])
 
     useEffect(()=>{
-        const url = `http://localhost:9090/api/recipe/daily`
-        axios.get(url).then( res => setRecipe(res.data))        
+        const daily = `https://zuperfit-api.herokuapp.com/api/recipe/daily`
+        const weeklyURL = `https://zuperfit-api.herokuapp.com/api/recipe/weekly/recipes/rec`
+        axios.get(daily).then( res => setRecipe(res.data))
+        axios.get(weeklyURL).then( res => setWeekly(res.data))       
     },[])
-
         return (
         <div className="Home">
             <Search />
             <Categories />
-            <Featured>
-                {<Item key={recipe._id}{...recipe} isLists= {true}/>}
-            </Featured>
+            <FeaturedSection>
+                <Featured>
+                    {<Item key={recipe._id}{...recipe} isLists= {true}/>}
+                </Featured>
+                <Weekly>
+                    {weekly.map( item =>
+                    <WeeklyItem key={item} {...item}/>
+                    )}
+                </Weekly>
+            </FeaturedSection>
+            
            
         </div>
         

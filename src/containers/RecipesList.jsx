@@ -24,7 +24,7 @@ const RecipesList = ({match}) => {
         <section className="favorites__container">
             <Cards title={title}>
                 {recipes.map(recipe =>
-                <Item key={recipe._id} {...recipe} isList={true}/>
+                <Item key={recipe._id} {...recipe} isLists= {true}/>
                  )}
             </Cards>
         </section>
